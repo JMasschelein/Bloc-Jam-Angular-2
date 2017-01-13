@@ -1,53 +1,72 @@
 (function() {
-    function Fixtures() {
-       var Fixtures = {};
-       var albumPicasso = {
-         title: 'The Colors',
-         artist: 'Pablo Picasso',
-         label: 'Cubism',
-         year: '1881',
-         albumArtUrl: '/assets/images/album_covers/01.png',
-         songs: [
-             { title: 'Blue', duration: '161.71', audioUrl: '/assets/music/blue' },
-             { title: 'Green', duration: '103.96', audioUrl: '/assets/music/green' },
-             { title: 'Red', duration: '268.45', audioUrl: '/assets/music/red' },
-             { title: 'Pink', duration: '153.14', audioUrl: '/assets/music/pink' },
-             { title: 'Magenta', duration: '374.22', audioUrl: '/assets/music/magenta' }
-         ]
-        };
+  function Fixtures() {
+    var Fixtures = {};
 
-     var albumMarconi = {
-         title: 'The Telephone',
-         artist: 'Guglielmo Marconi',
-         label: 'EM',
-         year: '1909',
-         albumArtUrl: '/assets/images/album_covers/20.png',
-         songs: [
-             { title: 'Hello, Operator?', duration: '1:01' },
-             { title: 'Ring, ring, ring', duration: '5:01' },
-             { title: 'Fits in your pocket', duration: '3:21' },
-             { title: 'Can you hear me now?', duration: '3:14' },
-             { title: 'Wrong phone number', duration: '2:15' }
-         ]
-
-     };
-
-    Fixtures.getAlbum = function() {
-     return albumPicasso;
+    //lists album1's attributes
+    var albumPicasso = {
+        title: 'The Colors',
+        artist: 'Pablo Picasso',
+        label: 'Cubism',
+        year: '1881',
+        albumArtUrl: '/assets/images/album_covers/01.png',
+        songs: [
+            { name: 'Blue', length: '161.171', audioUrl: '/assets/music/blue' },
+            { name: 'Green', length: '103.96', audioUrl: '/assets/music/green' },
+            { name: 'Red', length: '268.45', audioUrl: '/assets/music/red' },
+            { name: 'Pink', length: '153.14', audioUrl: '/assets/music/pink' },
+            { name: 'Magenta', length: '374.22', audioUrl: '/assets/music/magenta' }
+        ]
     };
 
 
-    Fixtures.getCollection = function(numberOfAlbums) {
-      var eachAlbum = [];
-      for (var i = 0; i < numberOfAlbums; i++) {
-            eachAlbum.push(albumPicasso);
-      }
-        return eachAlbum;
+    //lists album2's attributes
+    var albumMarconi = {
+        title: 'The Telephone',
+        artist: 'Guglielmo Marconi',
+        label: 'EM',
+        year: '1909',
+        albumArtUrl: 'assets/images/album_covers/20.png',
+        songs: [
+            { name: 'Hello, Operator?', length: '61' },
+            { name: 'Ring, ring, ring', length: '301' },
+            { name: 'Fits in your pocket', length: '201'},
+            { name: 'Can you hear me now?', length: '194' },
+            { name: 'Wrong phone number', length: '135'}
+        ]
     };
+
+    //lists album3's attributes
+    var albumPastry = {
+      name: 'The Life of Sweets',
+      artist: 'Donut Man',
+      label: 'NomNom',
+      year: '2016',
+      albumArtUrl: 'assets/images/album_covers/01.png',
+      songs: [
+        {name: 'Sugar Donut', length: '1:00'},
+        {name: 'Chocolate Donut', length: '1:30'},
+        {name: 'Glazed Donut', length: '2:00'},
+        {name: 'Plain Donut', length: '2:30'}
+      ]
+    };
+
+    Fixtures.getAlbum = function() { //public method
+      return albumPicasso;
+    };
+
+    Fixtures.getCollection = function(numberOfAlbums){
+        var albums = [];
+        for (var i = 0; i < numberOfAlbums; i++){
+          albums.push(albumPicasso);
+        }
+        return albums;
+    };
+
+
     return Fixtures;
-}
+  }
 
-    angular
-        .module('blocJams')
-        .factory('Fixtures', Fixtures);
+  angular
+    .module('blocJams')
+    .factory('Fixtures', Fixtures);
 })();
